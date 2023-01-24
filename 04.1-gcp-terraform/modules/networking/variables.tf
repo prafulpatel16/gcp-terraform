@@ -1,13 +1,16 @@
 variable "environment" {
     description = "The stage of workloads that will be deployed to this network"
+    type = string
+   
 }
 
 variable "cidr_range" {
   description = "The range of IP addresses for this VPC"
+  
 }
 
 variable "regions" {
-  type = list(string)
+  type = string
   description= "The regions where subnets should be created"
 }
 
@@ -17,7 +20,7 @@ variable "subnet_size" {
 
 locals {
     split_cidr = split("/", var.cidr_range )
-    cidr_size = element(local.split_cidr, length(local.split_cdir)-1)
+    cidr_size = element(local.split_cidr, length(local.split_cidr)-1)
     newbits = var.subnet_size - tonumber(local.cidr_size)
 }
 
