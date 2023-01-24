@@ -8,7 +8,7 @@ resource "google_service_account" "default" {
 
 resource "google_compute_instance" "default" {
   name         = "test"
-  machine_type = "e2-medium"
+  machine_type = var.machine_type
   zone         = "us-central1-a"
 
   tags = ["foo", "bar"]
@@ -17,7 +17,8 @@ resource "google_compute_instance" "default" {
     initialize_params {
       image = "debian-cloud/debian-11"
       labels = {
-        my_label = "value"
+        my_label = "dev"
+        type  = "pd-ssd"
       }
     }
   }
@@ -38,3 +39,5 @@ resource "google_compute_instance" "default" {
   }
 
 }
+
+

@@ -16,3 +16,8 @@ variable "subnetwork_project" {
   type        = string
   default     = ""
 }
+
+variable "machine_type"{
+  type = string
+  default = ""
+}

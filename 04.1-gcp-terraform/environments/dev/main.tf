@@ -5,13 +5,16 @@ module "network" {
   regions     = "us-central1"
   subnet_size = 28
 }
+
+
 module "compute" {
   source = "../../modules/compute"
-  #  subnetwork = "test-subnetwork"
+  machine_type  = "n1-standard-1"
+
+#  subnetwork = "test-subnetwork"
 #  network    = "${module.networking.vpc}"
 #  subnetwork = "${module.networking.subnetwork}"
-
 #  network    = module.networking.vpc
-#  subnetwork = module.networking.subnetwork
+   subnetwork = module.network.subnetwork
 
 }
